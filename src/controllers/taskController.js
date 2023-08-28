@@ -1,5 +1,6 @@
 const Task = require("../models/Task");
 
+//Get all task
 getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
@@ -9,6 +10,7 @@ getAllTasks = async (req, res) => {
   }
 };
 
+//Add task
 addTaskData = async (req, res) => {
   try {
     //prepare on obj to DB
@@ -22,19 +24,54 @@ addTaskData = async (req, res) => {
   }
 };
 
-deleteTask = async (req, res) => {
-  const _id = res.params.id;
+// delete task
+deleteTaskById = async (req, res) => {
+  const taskId = req.params.id;
 
-  Task.findByIdAndDelete(_id)
-    .then((deleteTask) => {
-      if (!deleteTask) {
-        return res.status(404).json({ error: "Task not found" });
-      }
-      res.status(204).json({ message: "Task delected successfully" });
-    })
-    .catch((error) => {
-      res.status(500).json({ error: "Internal server error" });
-    });
+  try {
+    const deletedTask = await Task.findByIdAndDelete(taskId);
+    if (!deletedTask) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+    res.json({ message: 'Task deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error deleting task' });
+  }
 };
 
-module.exports = { getAllTasks, addTaskData, deleteTask };
+//Modified task
+AlterTask = async (req, res) => {
+  const id = req.params.id
+  const taskReWrite = req.body;
+
+  try {
+    const changeTask = await Task.findByIdAndUpdate(id, taskReWrite);
+    if (!changeTask) {
+      return res.status(404).json({ error: 'Task not Changed' });
+    }
+    res.json({ message: 'Task changed as you mentioned' });
+
+  } catch (error) {
+    res.status(500).json({ error: 'Error Re-Write task' });
+  }
+}
+
+//find by ID
+findByIdTask = async (req, res) => {
+  const id = req.params.id
+  const findId = req.body;
+
+  try {
+    const TaskValue = await Task.findById(id, findId);
+    if (!TaskValue) {
+      return res.status(404).json({ error: "Task not found please check ID" })
+    }
+    res.json(TaskValue)
+
+  } catch (error) {
+    res.status(500).json({ error: 'Error on connection' })
+
+  }
+}
+
+module.exports = { getAllTasks, addTaskData, deleteTaskById, AlterTask, findByIdTask };
