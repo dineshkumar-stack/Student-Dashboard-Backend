@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const taskBarChartSchema = new mongoose.Schema({
   title: String,
+  SNo: Number,
   subTitle: String,
   mark: Number,
   timeStamp: {
