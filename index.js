@@ -7,16 +7,11 @@ var cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-
 const taskRoutes = require("./src/routes/taskRoutes");
-
+const taskBarChartRoutes = require("./src/routes/taskBarChartRoutes");
 
 app.use("/api", taskRoutes);
-
-
-
-
-
+app.use("/api", taskBarChartRoutes);
 
 const PORT = process.env.PORT || 9001;
 app.listen(PORT, () => {
