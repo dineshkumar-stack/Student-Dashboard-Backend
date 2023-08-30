@@ -6,6 +6,7 @@ const taskBarChartSchema = new mongoose.Schema({
   subTitle: String,
   FrontEndLink: String,
   BackEndLink: String,
+  mark: Number,
   timeStamp: {
     type: Date,
     default: Date.now,
