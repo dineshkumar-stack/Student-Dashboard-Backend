@@ -4,6 +4,6 @@ const userDetailController = require("../controllers/userDetailController");
 
 router.get("/userdetail", userDetailController.getUserDetails);
 router.post("/userdetail", userDetailController.addUserDetail);
-router.put("/userdetail/:id", userDetailController.alterUserDetail);
+router.put("/userdetail", userDetailController.alterUserDetail);
 
 module.exports = router;

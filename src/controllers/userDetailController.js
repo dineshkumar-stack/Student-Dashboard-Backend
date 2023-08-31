@@ -22,25 +22,25 @@ const addUserDetail = async (req, res) => {
 };
 
 const alterUserDetail = async (req, res) => {
-  const id = req.params.id;
-  const userInfoModifi = req.body;
+  const { name, phone, email, batch, Qualification, yearOfPass, yearOfExperience, noticePeriod, gifhud, resume, portfolioURL } = req.body;
 
   try {
-    const changeUserInfo = await UserDetail.findByIdAndUpdate(
-      id,
-      userInfoModifi
+    const updatedUser = await UserDetail.findOneAndUpdate(
+      {},
+      { name, phone, email, batch, Qualification, yearOfPass, yearOfExperience, noticePeriod, gifhud, resume, portfolioURL },
+      { new: true }
     );
-    if (!changeUserInfo) {
-      return res
-        .status(404)
-        .json({ error: "X User information not changed X" });
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: 'User not found' });
     }
-    res.json({message: ' User Information Changed'})
+
+    return res.json(updatedUser);
   } catch (error) {
-    res
-      .status(500)
-      .json({ Error: "XXX Unable to edit the user information XXX" });
+    console.error(error);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 module.exports = { getUserDetails, addUserDetail, alterUserDetail };
