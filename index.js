@@ -9,9 +9,11 @@ app.use(express.json());
 
 const taskRoutes = require("./src/routes/taskRoutes");
 const taskBarChartRoutes = require("./src/routes/taskBarChartRoutes");
+const userDetailRoutes = require("./src/routes/userDetailRoutes");
 
 app.use("/api", taskRoutes);
 app.use("/api", taskBarChartRoutes);
+app.use("/api", userDetailRoutes);
 
 const PORT = process.env.PORT || 9001;
 app.listen(PORT, () => {
