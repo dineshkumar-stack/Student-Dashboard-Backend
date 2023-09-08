@@ -13,12 +13,15 @@ const taskRoutes = require("./src/routes/taskRoutes");
 const taskBarChartRoutes = require("./src/routes/taskBarChartRoutes");
 const userDetailRoutes = require("./src/routes/userDetailRoutes");
 const authRoutes = require('./src/routes/authRoutes')
+const codekataRoutes = require('./src/routes/codekata')
 
 
 app.use("/api", taskRoutes);
 app.use("/api", taskBarChartRoutes);
 app.use("/api", userDetailRoutes);
 app.use("/api",authRoutes);
+app.use("/api", codekataRoutes)
+
 
 const PORT = process.env.PORT || 9001;
 app.listen(PORT, () => {

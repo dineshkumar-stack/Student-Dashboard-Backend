@@ -15,7 +15,7 @@ mongoose
 
 // config/config.js
 module.exports = {
-  jwtSecret: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNDYxMDQ2MTAwIiwibmFtZSI6IkRpbmVzaCBLdW1hciIsImlhdCI6MTUxNjIzOTAyMn0.BR43aaZvbTAT_InsOzrZFYz3Tvssejw22j_zBh9EgYI',
+  jwtSecret: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
 };
   
 
