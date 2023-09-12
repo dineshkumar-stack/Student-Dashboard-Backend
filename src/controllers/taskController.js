@@ -1,6 +1,5 @@
 const Task = require("../models/Task");
 
-//Get all task
 getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
@@ -10,12 +9,9 @@ getAllTasks = async (req, res) => {
   }
 };
 
-//Add task
 addTaskData = async (req, res) => {
   try {
-    //prepare on obj to DB
     const addTask = new Task(req.body);
-    //storing the new obj DB
     addTask.save().then((result) => {
       res.status(201).json({ message: "----- Task Created ------" });
     });
@@ -24,7 +20,6 @@ addTaskData = async (req, res) => {
   }
 };
 
-// delete task
 deleteTaskById = async (req, res) => {
   const taskId = req.params.id;
 
@@ -39,7 +34,6 @@ deleteTaskById = async (req, res) => {
   }
 };
 
-//Modified task
 AlterTask = async (req, res) => {
   const id = req.params.id
   const taskReWrite = req.body;
@@ -56,7 +50,6 @@ AlterTask = async (req, res) => {
   }
 }
 
-//find by ID
 findByIdTask = async (req, res) => {
   const id = req.params.id
   const findId = req.body;

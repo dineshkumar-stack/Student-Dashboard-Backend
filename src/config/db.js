@@ -13,7 +13,6 @@ mongoose
     console.log("Error connecting MongoDB", error.message);
   });
 
-// config/config.js
 module.exports = {
   jwtSecret: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
 };

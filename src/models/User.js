@@ -1,17 +1,17 @@
 const mongoose = require("mongoose");
 
-// Define the User schema
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
     unique: true,
   },
+  
   password: {
     type: String,
     required: true,
   },
-  // Add other user properties here
+
   codePracticeScores: [
     {
       score: Number,
@@ -21,9 +21,37 @@ const userSchema = new mongoose.Schema({
       },
     },
   ],
+
+  webPracticeScores: [
+    {
+      score: Number,
+      timeStamp: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
+
+  userDetails: [{
+    DPimage: String,
+    name: String,
+    phone: Number,
+    email: String,
+    batch: String,
+    Qualification: String,
+    yearOfPass: Number,
+    yearOfExperience: Number,
+    noticePeriod: Number,
+    gifhud: String,
+    resume: String,
+    portfolioURL: String,
+    timeStamp: {
+      type: Date,
+      default: Date.now,
+    },
+  }],
 });
 
-// Create the User model from the schema
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

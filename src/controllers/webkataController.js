@@ -1,6 +1,6 @@
 const User = require("../models/User");
 
-const recordScore = async (req, res) => {
+const recordWebkataScore = async (req, res) => {
   const userId = req.userId;
 
 
@@ -17,7 +17,7 @@ const recordScore = async (req, res) => {
     const scoreEntry = {
       score: score,
     };
-    user.codePracticeScores.push(scoreEntry);
+    user.webPracticeScores.push(scoreEntry);
 
     await user.save();
 
@@ -28,7 +28,7 @@ const recordScore = async (req, res) => {
   }
 };
 
-const getScores = async (req, res) => {
+const getWebkataScores = async (req, res) => {
   const userId = req.userId;
 
   try {
@@ -38,13 +38,13 @@ const getScores = async (req, res) => {
     if (!user) {
       throw new Error("User not found");
     }
-    const codePracticeScores = user.codePracticeScores;
+    const webPracticeScores = user.webPracticeScores;
 
-    res.status(200).json({ codePracticeScores });
+    res.status(200).json({ webPracticeScores });
   } catch (error) {
     console.error("Error fetching scores:", error);
     res.status(500).json({ message: "Error fetching scores" });
   }
 };
 
-module.exports = { getScores, recordScore };
+module.exports = { getWebkataScores, recordWebkataScore };

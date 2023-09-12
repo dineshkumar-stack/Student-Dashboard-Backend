@@ -1,6 +1,5 @@
 const TaskBar = require("../models/TaskBarChart");
 
-//Get all Task bar details
 getAllTaskBar = async (req, res) => {
   try {
     const taskBarData = await TaskBar.find();
@@ -10,7 +9,6 @@ getAllTaskBar = async (req, res) => {
   }
 };
 
-//Task bar data added
 addTaskBarData = async (req, res) => {
   try {
     const addTaskBarData = new TaskBar(req.body);

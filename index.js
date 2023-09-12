@@ -14,6 +14,7 @@ const taskBarChartRoutes = require("./src/routes/taskBarChartRoutes");
 const userDetailRoutes = require("./src/routes/userDetailRoutes");
 const authRoutes = require('./src/routes/authRoutes')
 const codekataRoutes = require('./src/routes/codekata')
+const webkataRoutes = require('./src/routes/webkata')
 
 
 app.use("/api", taskRoutes);
@@ -21,6 +22,8 @@ app.use("/api", taskBarChartRoutes);
 app.use("/api", userDetailRoutes);
 app.use("/api",authRoutes);
 app.use("/api", codekataRoutes)
+app.use("/api", webkataRoutes)
+
 
 
 const PORT = process.env.PORT || 9001;

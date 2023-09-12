@@ -1,4 +1,3 @@
-// models/CodeKata.js
 const mongoose = require('mongoose');
 
 const codeKataSchema = new mongoose.Schema({
